@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Result {
+public extension Result {
 
     func onFailure(_ whenFailure: (Failure) -> Void) {
         switch self {
