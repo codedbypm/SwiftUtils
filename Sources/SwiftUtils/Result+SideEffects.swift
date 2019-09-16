@@ -9,7 +9,7 @@ import Foundation
 
 public extension Result {
 
-    public func onFailure(_ whenFailure: (Failure) -> Void) {
+    func onFailure(_ whenFailure: (Failure) -> Void) {
         switch self {
         case .success:
             return
@@ -18,7 +18,7 @@ public extension Result {
         }
     }
 
-    public func onSuccess(_ whenSuccess: (Success) -> Void) {
+    func onSuccess(_ whenSuccess: (Success) -> Void) {
         switch self {
         case .success(let success):
             whenSuccess(success)

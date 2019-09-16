@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Dictionary where Key: StringProtocol, Value: StringProtocol {
+public extension Dictionary where Key: StringProtocol, Value: StringProtocol {
 
     var httpQuery: String {
         return map {
