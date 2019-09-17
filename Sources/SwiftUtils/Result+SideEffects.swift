@@ -9,22 +9,25 @@ import Foundation
 
 public extension Result {
 
-    func onFailure(_ whenFailure: (Failure) -> Void) {
+    @discardableResult
+    func onFailure(_ whenFailure: (Failure) -> Void) -> Self {
         switch self {
         case .success:
-            return
+            break
         case .failure(let error):
             whenFailure(error)
         }
+        return self
     }
 
-    func onSuccess(_ whenSuccess: (Success) -> Void) {
+    @discardableResult
+    func onSuccess(_ whenSuccess: (Success) -> Void) -> Self {
         switch self {
         case .success(let success):
             whenSuccess(success)
-            return
         case .failure:
-            return
+            break
         }
+        return self
     }
 }
