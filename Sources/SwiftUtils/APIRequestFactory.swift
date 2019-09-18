@@ -35,7 +35,7 @@ public extension APIRequestFactory {
         return request as URLRequest
     }
 
-    func url(forRequestType type: T) throws -> URL {
+    func url(forRequestType type: T) -> URL {
 
         var components = URLComponents()
         components.scheme = scheme
