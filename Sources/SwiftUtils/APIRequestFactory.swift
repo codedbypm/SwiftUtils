@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol APIRequestFactory {
+public protocol APIRequestFactory {
     associatedtype T
 
     func request(forRequestType type: T) -> URLRequest
