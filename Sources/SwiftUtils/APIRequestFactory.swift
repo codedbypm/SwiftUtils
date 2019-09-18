@@ -10,8 +10,9 @@ import Foundation
 public protocol APIRequestFactory {
     associatedtype T
 
-    var host: String { get }
     var scheme: String { get }
+    var host: String { get }
+    var basePath: String { get }
 
     func request(ofType type: T) -> URLRequest
     func url(forRequestType type: T) -> URL
@@ -40,7 +41,7 @@ public extension APIRequestFactory {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
-        components.path = path(forRequestType: type)
+        components.path = basePath + path(forRequestType: type)
         components.query = query(forRequestType: type)
 
         return components.url!
