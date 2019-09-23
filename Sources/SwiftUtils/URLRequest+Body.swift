@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension URLRequest {
+public extension URLRequest {
 
     var httpBodyDictionary: [String: String] {
         guard let httpBody = httpBody else {
