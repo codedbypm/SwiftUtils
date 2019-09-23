@@ -9,7 +9,7 @@ import Foundation
 
 public extension URLRequest {
 
-    var httpBodyDictionary: [String: String] {
+    var httpBodyDictionary: [String: Any] {
         guard let httpBody = httpBody else {
             return [:]
         }
@@ -19,7 +19,7 @@ public extension URLRequest {
             options: []
         )
 
-        guard let body = decodedHTTPBody as? [String: String] else {
+        guard let body = decodedHTTPBody as? [String: Any] else {
             return [:]
         }
 
