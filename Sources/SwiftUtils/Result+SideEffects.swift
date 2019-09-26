@@ -32,4 +32,14 @@ public extension Result {
         }
         return self
     }
+
+    func onFailure(_ whenFailure: () -> Void) {
+        guard case .failure = self else { return }
+        whenFailure()
+    }
+
+    func onSuccess(_ whenSuccess: () -> Void) {
+        guard case .success = self else { return }
+        whenSuccess()
+    }
 }
