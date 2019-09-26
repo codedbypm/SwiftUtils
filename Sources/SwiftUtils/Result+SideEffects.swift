@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias OnResult<T> = (Result<T, Error>) -> Void
+
 public extension Result {
 
     @discardableResult
