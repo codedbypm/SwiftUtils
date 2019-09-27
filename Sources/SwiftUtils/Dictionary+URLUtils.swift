@@ -16,7 +16,7 @@ public extension Dictionary where Key: StringProtocol, Value: StringProtocol {
     }
 }
 
-public extension Dictionary {
+public extension Dictionary where Value == Any? {
     var httpBody: Data? {
         return try? JSONSerialization.data(withJSONObject: self, options: [])
     }
