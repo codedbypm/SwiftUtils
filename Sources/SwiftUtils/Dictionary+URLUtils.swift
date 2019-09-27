@@ -14,7 +14,9 @@ public extension Dictionary where Key: StringProtocol, Value: StringProtocol {
             map { return "\($0.key)=\($0.value)" }
             .joined(separator: "&")
     }
+}
 
+public extension Dictionary {
     var httpBody: Data? {
         return try? JSONSerialization.data(withJSONObject: self, options: [])
     }
