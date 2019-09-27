@@ -11,7 +11,12 @@ public protocol APIRequestFactory {
     associatedtype T
 
     var scheme: String { get }
-    var host: String { get }
+
+    /// The system uses the value returned by **host(forRequestType _: T) -> String** only when **host**
+    /// returns nil. In that case, the developer is expected to implement the method **host(forRequestType _: T) -> String**
+    /// otherwise the host will be set to an empy string for all type of requests. 
+    var host: String? { get }
+    func host(forRequestType _: T) -> String
 
     func request(ofType _: T) -> URLRequest
     func url(forRequestType _: T) -> URL
@@ -23,6 +28,10 @@ public protocol APIRequestFactory {
 }
 
 public extension APIRequestFactory {
+
+    func host(forRequestType _: T) -> String {
+        return ""
+    }
 
     func request(ofType type: T) -> URLRequest {
         let requestURL = url(forRequestType: type)
@@ -39,7 +48,7 @@ public extension APIRequestFactory {
 
         var components = URLComponents()
         components.scheme = scheme
-        components.host = host
+        components.host = host ?? host(forRequestType: type)
         components.path = path(forRequestType: type)
         components.query = query(forRequestType: type)
 
