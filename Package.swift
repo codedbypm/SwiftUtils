@@ -4,6 +4,10 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftUtils",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_14)
+    ],
     products: [
         .library(name: "SwiftUtils Lib", targets: ["SwiftUtils"])
     ],
