@@ -9,7 +9,7 @@ import SwiftUI
 
 extension SwiftUI.TextField where Label == Text {
 
-    init(_ title: String, text: Binding<String?>) {
+    public init(_ title: String, text: Binding<String?>) {
 
         let unwrappedBinding = Binding<String>(
             get: { text.wrappedValue ?? "" },

@@ -11,7 +11,7 @@ import SwiftUI
 extension Binding {
 
     /// Returns an instance by wrapping the base value to an optional value.
-    var wrapped: Binding<Value?> {
+    public var wrapped: Binding<Value?> {
         return Binding<Value?>(self)
     }
 }
