@@ -15,3 +15,14 @@ extension Binding {
         return Binding<Value?>(self)
     }
 }
+
+extension Binding where Value == Bool {
+
+    /// Returns an instance by toggling the original Value
+    public func toggled() -> Binding<Value> {
+        return Binding(
+            get: { !self.wrappedValue },
+            set: { self.wrappedValue = $0 }
+        )
+    }
+}
