@@ -9,12 +9,21 @@ import SwiftUI
 
 extension SwiftUI.TextField where Label == Text {
 
-    public init(_ title: String, text: Binding<String?>) {
-
+    public init(
+        _ title: String,
+        text: Binding<String?>,
+        onEditingChanged: @escaping (Bool) -> Void,
+        onCommit: @escaping () -> Void
+    ) {
         let unwrappedBinding = Binding<String>(
             get: { text.wrappedValue ?? "" },
             set: { text.wrappedValue = $0 }
         )
-        self = SwiftUI.TextField(title, text: unwrappedBinding)
+        self = SwiftUI.TextField(
+            title,
+            text: unwrappedBinding,
+            onEditingChanged: onEditingChanged,
+            onCommit: onCommit
+        )
     }
 }
