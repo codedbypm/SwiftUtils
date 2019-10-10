@@ -12,8 +12,8 @@ extension SwiftUI.TextField where Label == Text {
     public init(
         _ title: String,
         text: Binding<String?>,
-        onEditingChanged: @escaping (Bool) -> Void,
-        onCommit: @escaping () -> Void
+        onEditingChanged: @escaping (Bool) -> Void = { _ in },
+        onCommit: @escaping () -> Void = { }
     ) {
         let unwrappedBinding = Binding<String>(
             get: { text.wrappedValue ?? "" },
