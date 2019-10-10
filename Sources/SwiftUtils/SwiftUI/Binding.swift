@@ -22,7 +22,7 @@ extension Binding where Value == Bool {
     public func toggled() -> Binding<Value> {
         return Binding(
             get: { !self.wrappedValue },
-            set: { self.wrappedValue = $0 }
+            set: { self.wrappedValue = !$0 }
         )
     }
 }
