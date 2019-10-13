@@ -9,14 +9,14 @@ import Foundation
 
 extension Optional where Wrapped == String {
 
-    func orEmpty() -> String {
+    public func orEmpty() -> String {
         return orDefault("")
     }
 }
 
 extension Optional {
 
-    func orDefault(_ value: Wrapped) -> Wrapped {
+    public func orDefault(_ value: Wrapped) -> Wrapped {
         if let self = self { return self }
         else { return value }
     }
