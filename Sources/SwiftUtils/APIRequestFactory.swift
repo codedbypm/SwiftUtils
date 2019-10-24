@@ -49,7 +49,7 @@ public extension APIRequestFactory {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host ?? host(forRequestType: type)
-        components.path = path(forRequestType: type) ?? ""
+        components.path = path(forRequestType: type)
         components.query = query(forRequestType: type)
 
         return components.url!
