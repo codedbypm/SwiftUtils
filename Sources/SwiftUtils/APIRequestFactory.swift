@@ -20,8 +20,8 @@ public protocol APIRequestFactory {
 
     func request(ofType _: T) -> URLRequest
     func url(forRequestType _: T) -> URL
-    func path(forRequestType _: T) -> String?
-    func query(forRequestType _: T) -> String?
+    func path(forRequestType _: T) -> String
+    func query(forRequestType _: T) -> String
     func headers(forRequestType _: T) -> [String: String]
     func httpMethod(forRequestType _: T) -> String
     func httpBody(forRequestType _: T) -> Data?
