@@ -16,7 +16,8 @@ struct MockAPIRequestFactory: APIRequestFactory {
 
     var host: String? { nil }
 
-    var scheme: String { "" }
+    var returnedScheme = "http"
+    var scheme: String { returnedScheme }
 
     func path(forRequestType _: MockAPIRequestType) -> String {
         ""

@@ -30,7 +30,13 @@ public protocol APIRequestFactory {
 
 public extension APIRequestFactory {
 
-    var port: Int { 80 }
+    var port: Int {
+        switch scheme {
+        case "https": return 443
+        case "http": return 80
+        default: fatalError()
+        }
+    }
     
     func host(forRequestType _: T) -> String {
         return ""
