@@ -30,10 +30,15 @@ public protocol APIRequestFactory {
 
 public extension APIRequestFactory {
 
+    public enum Port: Int {
+        case port80 = 80
+        case port443 = 443
+    }
+
     var port: Int {
         switch scheme {
-        case "https": return 443
-        case "http": return 80
+        case "https": return Port.port443.rawValue
+        case "http": return Port.port80.rawValue
         default: fatalError()
         }
     }
