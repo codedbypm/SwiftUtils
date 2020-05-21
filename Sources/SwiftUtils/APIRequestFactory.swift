@@ -28,17 +28,17 @@ public protocol APIRequestFactory {
     func httpBody(forRequestType _: T) -> Data?
 }
 
-public extension APIRequestFactory {
+public enum HTTPPort: Int {
+    case port80 = 80
+    case port443 = 443
+}
 
-    public enum Port: Int {
-        case port80 = 80
-        case port443 = 443
-    }
+public extension APIRequestFactory {
 
     var port: Int {
         switch scheme {
-        case "https": return Port.port443.rawValue
-        case "http": return Port.port80.rawValue
+        case "https": return HTTPPort.port443.rawValue
+        case "http": return HTTPPort.port80.rawValue
         default: fatalError()
         }
     }
