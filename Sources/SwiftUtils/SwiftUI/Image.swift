@@ -12,7 +12,12 @@ extension Image {
     /// Create an `Image` from a `Data` object
     /// - Parameter data: The data object containing the image data.
     public init?(data: Data) {
+        #if os(iOS)
         guard let uiImage = UIImage(data: data) else { return nil }
         self = Image(uiImage: uiImage)
+        #elseif os(macOS)
+        guard let nsImage = NSImage(data: data) else { return nil }
+        self = Image(nsImage: nsImage)
+        #endif
     }
 }
