@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  APIRequestHandler.swift
 //  
 //
 //  Created by Paolo Moroni on 10/11/2020.
@@ -12,11 +12,13 @@ enum APIRequestError: Error {
     case decodingFailed(Error)
 }
 
-protocol APIRequestClient {
+protocol APIRequestHandler {
     var session: URLSession { get }
+
+    func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>)
 }
 
-extension APIRequestClient {
+extension APIRequestHandler {
 
     func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>) {
         let task = session.dataTask(with: request) { (data, response, error) in
