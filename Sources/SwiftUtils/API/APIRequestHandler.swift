@@ -7,18 +7,18 @@
 
 import Foundation
 
-enum APIRequestError: Error {
+public enum APIRequestError: Error {
     case noData
     case decodingFailed(Error)
 }
 
-protocol APIRequestHandler {
+public protocol APIRequestHandler {
     var session: URLSession { get }
-
+    
     func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>)
 }
 
-extension APIRequestHandler {
+public extension APIRequestHandler {
 
     func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>) {
         let task = session.dataTask(with: request) { (data, response, error) in
