@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Dictionary+URL.swift
 //  
 //
 //  Created by Paolo Moroni on 16/09/2019.
@@ -16,7 +16,7 @@ public extension Dictionary where Key: StringProtocol, Value: StringProtocol {
     }
 }
 
-public extension Dictionary where Value == Any? {
+public extension Dictionary where Key: StringProtocol, Value == Any {
     var httpBody: Data? {
         return try? JSONSerialization.data(withJSONObject: self, options: [])
     }
