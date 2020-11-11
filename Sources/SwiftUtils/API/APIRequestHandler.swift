@@ -15,12 +15,18 @@ public enum APIRequestError: Error {
 public protocol APIRequestHandler {
     var session: URLSession { get }
     
-    func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>)
+    func sendRequest<DTO: Decodable>(
+        _ request: URLRequest,
+        whenDone: @escaping OnResult<DTO>
+    )
 }
 
 public extension APIRequestHandler {
 
-    func sendRequest<DTO: Decodable>(_ request: URLRequest, whenDone: @escaping OnResult<DTO>) {
+    func sendRequest<DTO: Decodable>(
+        _ request: URLRequest,
+        whenDone: @escaping OnResult<DTO>
+    ) {
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 whenDone(.failure(self.handleFailure(error)))
@@ -40,6 +46,8 @@ public extension APIRequestHandler {
             return .failure(APIRequestError.noData)
         }
 
+        print("JSON string: %@", String(data: data, encoding: .utf8) as Any)
+        
         do {
             let dto = try JSONDecoder().decode(DTO.self, from: data)
             return .success(dto)
@@ -47,6 +55,5 @@ public extension APIRequestHandler {
         catch let error {
             return .failure(APIRequestError.decodingFailed(error))
         }
-
     }
 }
