@@ -30,8 +30,10 @@ public extension APIRequestHandler {
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 whenDone(.failure(self.handleFailure(error)))
-            } else {
+            } else if let data = data {
                 whenDone(self.handleData(data))
+            } else {
+                whenDone(.failure(APIRequestError.noData))
             }
         }
         task.resume()
@@ -41,16 +43,17 @@ public extension APIRequestHandler {
         return error
     }
 
-    private func handleData<DTO:Decodable>(_ data: Data?) -> Result<DTO, Error> {
-        guard let data = data else {
-            return .failure(APIRequestError.noData)
-        }
+    private func handleData<DTO:Decodable>(_ data: Data) -> Result<DTO, Error> {
+        print("JSON string: \(String(data: data, encoding: .utf8) as Any)")
 
-        print("JSON string: %@", String(data: data, encoding: .utf8) as Any)
-        
         do {
-            let dto = try JSONDecoder().decode(DTO.self, from: data)
-            return .success(dto)
+            if data.isEmpty, let emptyData = Empty.data {
+                let dto = try JSONDecoder().decode(DTO.self, from: emptyData)
+                return .success(dto)
+            } else {
+                let dto = try JSONDecoder().decode(DTO.self, from: data)
+                return .success(dto)
+            }
         }
         catch let error {
             return .failure(APIRequestError.decodingFailed(error))
