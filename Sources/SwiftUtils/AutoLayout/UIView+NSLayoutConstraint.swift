@@ -1,0 +1,21 @@
+//
+//  File.swift
+//  
+//
+//  Created by Paolo Moroni on 15/12/2020.
+//
+
+import UIKit
+
+public extension UIView {
+
+    public func pinEdges(to view: UIView) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: view.topAnchor),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}
+
