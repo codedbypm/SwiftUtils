@@ -7,7 +7,7 @@
 
 import UIKit
 
-public extension UIView {
+public extension LayoutAnchorable {
 
     func pinEdges(to view: UIView) {
         NSLayoutConstraint.activate([
