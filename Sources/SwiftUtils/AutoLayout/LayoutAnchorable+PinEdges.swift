@@ -26,6 +26,4 @@ public extension LayoutAnchorable {
             trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
         ])
     }
-
 }
-
