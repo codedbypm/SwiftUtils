@@ -9,7 +9,7 @@ import UIKit
 
 public extension UIView {
 
-    public func pinEdges(to view: UIView) {
+    func pinEdges(to view: UIView) {
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: view.topAnchor),
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -17,5 +17,15 @@ public extension UIView {
             trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+
+    func pinEdges(to layoutGuide: UILayoutGuide) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: layoutGuide.topAnchor),
+            leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
+            trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
+        ])
+    }
+
 }
 
