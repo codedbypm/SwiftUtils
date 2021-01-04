@@ -5,6 +5,7 @@
 //  Created by Paolo Moroni on 15/12/2020.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public extension UIView {
@@ -15,4 +16,4 @@ public extension UIView {
         subviews.forEach(addSubview)
     }
 }
-
+#endif
