@@ -19,8 +19,13 @@ public protocol LayoutAnchorable {
 }
 
 #if canImport(UIKit)
+
 extension UIView: LayoutAnchorable {}
 extension UILayoutGuide: LayoutAnchorable {}
+
 #elseif canImport(AppKit) && !targetEnvironment(macCatalyst)
+
 extension NSView: LayoutAnchorable {}
+extension NSLayoutGuide: LayoutAnchorable { }
+
 #endif

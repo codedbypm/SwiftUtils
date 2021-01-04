@@ -13,44 +13,12 @@ import AppKit
 
 public extension LayoutAnchorable {
 
-#if canImport(UIKit)
-    func pinEdges(to view: UIView) {
+    func pinEdges(to anchorable: Self) {
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            topAnchor.constraint(equalTo: anchorable.topAnchor),
+            leadingAnchor.constraint(equalTo: anchorable.leadingAnchor),
+            bottomAnchor.constraint(equalTo: anchorable.bottomAnchor),
+            trailingAnchor.constraint(equalTo: anchorable.trailingAnchor)
         ])
     }
-
-    func pinEdges(to layoutGuide: UILayoutGuide) {
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: layoutGuide.topAnchor),
-            leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
-            trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
-        ])
-    }
-
-#elseif canImport(AppKit) && !targetEnvironment(macCatalyst)
-
-    func pinEdges(to view: NSView) {
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-    }
-
-    func pinEdges(to layoutGuide: NSLayoutGuide) {
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: layoutGuide.topAnchor),
-            leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
-            trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
-        ])
-    }
-
-#endif
 }
