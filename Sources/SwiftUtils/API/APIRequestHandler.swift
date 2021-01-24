@@ -39,6 +39,6 @@ public extension APIRequestHandler {
             os_log(.debug, "Request %@", url)
         }
         os_log(.debug, "Status code %d", response.statusCode)
-        os_log(.debug, "Body: %@", String(data: data, encoding: .utf8) ?? "nil")
+        os_log(.debug, "Body: %@", data.prettyJSON ?? "nil")
     }
 }
