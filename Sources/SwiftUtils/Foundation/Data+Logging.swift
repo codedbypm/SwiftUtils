@@ -13,7 +13,7 @@ public extension Data {
             let jsonObject = try JSONSerialization.jsonObject(with: self, options: [])
             let data = try JSONSerialization.data(
                 withJSONObject: jsonObject,
-                options: [.sortedKeys, .prettyPrinted]
+                options: [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
             )
             return String(data: data, encoding:.utf8)
         }
