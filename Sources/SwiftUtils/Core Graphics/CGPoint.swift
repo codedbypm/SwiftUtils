@@ -5,7 +5,7 @@
 
 import CoreGraphics
 
-extension CGPoint {
+public extension CGPoint {
 
     /// Returns a new  `CGPoint` whose `x` and `y` values equal the receiver `x` and `y`  values multiplied by -1
     /// - Returns: `CGPoint(x: -x, y: -y)`
