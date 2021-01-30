@@ -13,7 +13,7 @@ import AppKit
 
 public extension LayoutAnchorable {
 
-    func pinEdges(to anchorable: Self) {
+    func pinEdges(to anchorable: UIView) {
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: anchorable.topAnchor),
             leadingAnchor.constraint(equalTo: anchorable.leadingAnchor),
