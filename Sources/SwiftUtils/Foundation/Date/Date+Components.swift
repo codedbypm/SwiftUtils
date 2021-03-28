@@ -11,12 +11,12 @@ public extension Date {
     var year: Int { Calendar.autoupdatingCurrent.component(.year, from: self) }
 
     /// The quarter this date falls into
-    var quarter: Quarter? {
+    var quarter: Quarter {
         let month = self.month
 
         return Quarter.allCases.first {
             $0.monthsRange.contains(month)
-        }
+        }!
     }
 
     /// Returns the receiver's month
