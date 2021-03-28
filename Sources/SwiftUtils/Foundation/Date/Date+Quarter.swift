@@ -29,6 +29,21 @@ public extension Date {
     }
 }
 
+extension Date.Quarter: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .q1:
+            return "Q1"
+        case .q2:
+            return "Q2"
+        case .q3:
+            return "Q3"
+        case .q4:
+            return "Q4"
+        }
+    }
+}
+
 extension Date.Quarter: CaseIterable {}
 
 extension Date.Quarter: RawRepresentable {
