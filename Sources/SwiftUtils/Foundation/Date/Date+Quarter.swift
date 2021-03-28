@@ -8,15 +8,15 @@ import Foundation
 public extension Date {
 
     /// A type defining a consecutive period of 3 months
-    enum Quarter {
+    enum Quarter: Int {
         /// The period from January 1st to March 31st
-        case q1
+        case q1 = 1
         /// The period from April 1st to June 30th
-        case q2
+        case q2 = 2
         /// The period from July 1st to September 30th
-        case q3
+        case q3 = 3
         /// The period from October 1st to December 31st
-        case q4
+        case q4 = 4
 
         public var monthsRange: ClosedRange<Int> {
             switch self {
@@ -33,6 +33,12 @@ public extension Date {
     }
 }
 
+extension Date.Quarter: CaseIterable {}
+
+extension Date.Quarter: Identifiable {
+    public var id: Int { rawValue }
+}
+
 //extension Date.Quarter: CustomStringConvertible {
 //    public var description: String {
 //        switch self {
@@ -47,9 +53,6 @@ public extension Date {
 //        }
 //    }
 //}
-
-extension Date.Quarter: CaseIterable {}
-
 
 //extension Date.Quarter: RawRepresentable {
 //
