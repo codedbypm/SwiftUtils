@@ -35,10 +35,6 @@ public extension Date {
 
 extension Date.Quarter: CaseIterable {}
 
-extension Date.Quarter: Identifiable {
-    public var id: Int { rawValue }
-}
-
 extension Date.Quarter: CustomStringConvertible {
     public var description: String {
         switch self {
