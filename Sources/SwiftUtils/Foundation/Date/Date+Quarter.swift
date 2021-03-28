@@ -39,20 +39,36 @@ extension Date.Quarter: Identifiable {
     public var id: Int { rawValue }
 }
 
-//extension Date.Quarter: CustomStringConvertible {
-//    public var description: String {
-//        switch self {
-//        case .q1:
-//            return "Q1"
-//        case .q2:
-//            return "Q2"
-//        case .q3:
-//            return "Q3"
-//        case .q4:
-//            return "Q4"
-//        }
+extension Date.Quarter: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .q1:
+            return "Q1"
+        case .q2:
+            return "Q2"
+        case .q3:
+            return "Q3"
+        case .q4:
+            return "Q4"
+        }
+    }
+}
+
+
+//extension Date.Quarter: StringInterpolationProtocol {
+//    public init(literalCapacity: Int, interpolationCount: Int) {
+//        <#code#>
 //    }
+//
+//    public mutating func appendLiteral(_ literal: String) {
+//        <#code#>
+//    }
+//
+//    public typealias StringLiteralType = String
+//
+//
 //}
+
 
 //extension Date.Quarter: RawRepresentable {
 //
