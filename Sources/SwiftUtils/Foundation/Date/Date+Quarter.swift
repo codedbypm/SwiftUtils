@@ -17,64 +17,57 @@ public extension Date {
         case q3
         /// The period from October 1st to December 31st
         case q4
-    }
 
-    /// The quarter this date falls into
-    var quarter: Quarter? {
-        let month = Calendar.current.component(.month, from: self)
-
-        return Quarter.allCases.first {
-            $0.rawValue.contains(month)
+        public var monthsRange: ClosedRange<Int> {
+            switch self {
+            case .q1:
+                return 1...3
+            case .q2:
+                return 4...6
+            case .q3:
+                return 7...9
+            case .q4:
+                return 10...12
+            }
         }
     }
 }
 
-extension Date.Quarter: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .q1:
-            return "Q1"
-        case .q2:
-            return "Q2"
-        case .q3:
-            return "Q3"
-        case .q4:
-            return "Q4"
-        }
-    }
-}
+//extension Date.Quarter: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .q1:
+//            return "Q1"
+//        case .q2:
+//            return "Q2"
+//        case .q3:
+//            return "Q3"
+//        case .q4:
+//            return "Q4"
+//        }
+//    }
+//}
 
 extension Date.Quarter: CaseIterable {}
 
-extension Date.Quarter: RawRepresentable {
 
-    public typealias RawValue = ClosedRange<Int>
-
-    public var rawValue: ClosedRange<Int> {
-        switch self {
-        case .q1:
-            return 1...3
-        case .q2:
-            return 4...6
-        case .q3:
-            return 7...9
-        case .q4:
-            return 10...12
-        }
-    }
-
-    public init?(rawValue: ClosedRange<Int>) {
-        switch rawValue {
-        case 1...3:
-            self = .q1
-        case 4...6:
-            self = .q2
-        case 7...9:
-            self = .q3
-        case 10...12:
-            self = .q4
-        default:
-            return nil
-        }
-    }
-}
+//extension Date.Quarter: RawRepresentable {
+//
+//    public typealias RawValue = ClosedRange<Int>
+//
+//
+//    public init?(rawValue: ClosedRange<Int>) {
+//        switch rawValue {
+//        case 1...3:
+//            self = .q1
+//        case 4...6:
+//            self = .q2
+//        case 7...9:
+//            self = .q3
+//        case 10...12:
+//            self = .q4
+//        default:
+//            return nil
+//        }
+//    }
+//}
